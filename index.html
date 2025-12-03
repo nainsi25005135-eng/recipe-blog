@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Blog</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .recipe-card { border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
+        .recipe-card img { width: 100%; height: auto; }
+        .rating { color: gold; }
+        .search-bar { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Recipe Blog</h1>
+    <div class="search-bar">
+        <input type="text" placeholder="Search recipes..." id="searchInput">
+        <button onclick="searchRecipes()">Search</button>
+    </div>
+
+    <div id="recipeList">
+        <div class="recipe-card">
+            <h2>Pasta Carbonara</h2>
+            <img src="https://cdn.pixabay.com/photo/2022/09/24/07/31/pasta-7475756_1280.jpg" alt="Pasta Carbonara">
+            <p><strong>Ingredients:</strong> Pasta, eggs, cheese, bacon.</p>
+            <p><strong>Instructions:</strong> Cook pasta, mix with eggs, cheese, and bacon.</p>
+            <p>Rating: <span class="rating">★★★★☆</span></p>
+        </div>
+
+        <div class="recipe-card">
+            <h2>Chocolate Cake</h2>
+            <img src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg" alt="Chocolate Cake">
+            <p><strong>Ingredients:</strong> Flour, sugar, cocoa, eggs.</p>
+            <p><strong>Instructions:</strong> Mix ingredients, bake for 30 minutes.</p>
+            <p>Rating: <span class="rating">★★★★★</span></p>
+        </div>
+    </div>
+
+    <script>
+        function searchRecipes() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const recipes = document.getElementsByClassName('recipe-card');
+            for (let i = 0; i < recipes.length; i++) {
+                const title = recipes[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
+                if (title.includes(input)) {
+                    recipes[i].style.display = '';
+                } else {
+                    recipes[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
